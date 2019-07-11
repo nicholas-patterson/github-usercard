@@ -113,6 +113,7 @@ function createUserCard(user) {
   const followers = document.createElement("p");
   const following = document.createElement("p");
   const bio = document.createElement("p");
+  const expandButton = document.createElement("span");
   console.log(user);
 
   // set class names on elements
@@ -120,6 +121,7 @@ function createUserCard(user) {
   cardInfo.classList.add("card-info");
   name.classList.add("name");
   userName.classList.add("username");
+  expandButton.classList.add("expandButton");
 
   // put together
   card.appendChild(userImage);
@@ -131,6 +133,7 @@ function createUserCard(user) {
   cardInfo.appendChild(followers);
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
+  cardInfo.appendChild(expandButton);
 
   // setting content
 
@@ -142,6 +145,14 @@ function createUserCard(user) {
   followers.textContent = "Followers: " + user.followers;
   following.textContent = "Following: " + user.following;
   bio.textContent = "Bio: " + user.bio;
+  expandButton.textContent = "expand";
+
+  //button event
+
+  expandButton.addEventListener("click", event => {
+    console.log("button clicked", event.target);
+    card.classList.toggle("card-open");
+  });
 
   return card;
 }
